@@ -3843,7 +3843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Detective3DMovement
   moveSpeed: 5
   inputDeadZone: 0.15
-  rotationSpeed: 10
+  rotationSpeed: 2
   jumpForce: 7
   groundLayer:
     serializedVersion: 2
