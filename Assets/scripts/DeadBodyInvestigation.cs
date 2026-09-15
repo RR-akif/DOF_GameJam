@@ -25,7 +25,6 @@ public class DeadBodyInvestigation : MonoBehaviour
 
     [Header("After Body Popup")]
     [SerializeField] private GameObject afterInvestigationPopup;
-
     [SerializeField] private float afterPopupDelay = 2f;
     [SerializeField] private float afterPopupDuration = 5f;
 
@@ -37,18 +36,11 @@ public class DeadBodyInvestigation : MonoBehaviour
     [Header("Player Movement")]
     [SerializeField] private Detective2DMovement playerMovementScript;
 
-
-    // ======================================================
-    // PUBLIC STATE
-    // ======================================================
-
-    // FiveCharactersInterrogation checks this.
+    // Body camera investigation has happened.
     public bool HasInvestigatedBody { get; private set; }
 
-
-    // ======================================================
-    // INTERNAL STATE
-    // ======================================================
+    // Body diary has also been completed.
+    public bool HasCompletedBodyStage { get; private set; }
 
     private bool investigationStarted = false;
     private bool investigationFinished = false;
@@ -58,50 +50,30 @@ public class DeadBodyInvestigation : MonoBehaviour
 
     private int currentDiaryPage = 1;
 
-
-    // ======================================================
-    // START
-    // ======================================================
-
     private void Start()
     {
         HasInvestigatedBody = false;
+        HasCompletedBodyStage = false;
 
-        // Hide prompts
         investigatePrompt.SetActive(false);
         diaryPrompt.SetActive(false);
 
-        // Hide diary
         diaryPanel.SetActive(false);
 
         HideAllDiaryPages();
 
-        // Hide popup
         afterInvestigationPopup.SetActive(false);
 
-        // Camera setup
         normalCamera.SetActive(true);
         bodyCamera.SetActive(false);
     }
 
-
-    // ======================================================
-    // UPDATE
-    // ======================================================
-
     private void Update()
     {
         HandleInvestigation();
-
         HandleDiaryOpening();
-
         HandleDiaryNavigation();
     }
-
-
-    // ======================================================
-    // CHECK DISTANCE TO DEAD BODY
-    // ======================================================
 
     private void HandleInvestigation()
     {
@@ -131,41 +103,30 @@ public class DeadBodyInvestigation : MonoBehaviour
         }
     }
 
-
-    // ======================================================
-    // DEAD BODY INVESTIGATION
-    // ======================================================
-
     private IEnumerator InvestigateBody()
     {
         investigationStarted = true;
 
         investigatePrompt.SetActive(false);
 
-        // Disable movement
         if (playerMovementScript != null)
         {
             playerMovementScript.enabled = false;
         }
 
-        // Switch to dead body camera
         normalCamera.SetActive(false);
         bodyCamera.SetActive(true);
 
-        // Stay for 3 seconds
         yield return new WaitForSeconds(bodyCameraDuration);
 
-        // Return to normal camera
         bodyCamera.SetActive(false);
         normalCamera.SetActive(true);
 
-        // Restore movement
         if (playerMovementScript != null)
         {
             playerMovementScript.enabled = true;
         }
 
-        // Mark body as investigated
         HasInvestigatedBody = true;
 
         investigationStarted = false;
@@ -173,16 +134,8 @@ public class DeadBodyInvestigation : MonoBehaviour
 
         diaryReady = true;
 
-        // Show:
-        // "Two items are added to your diary.
-        // Press D to open the diary."
         diaryPrompt.SetActive(true);
     }
-
-
-    // ======================================================
-    // OPEN FIRST DIARY
-    // ======================================================
 
     private void HandleDiaryOpening()
     {
@@ -195,14 +148,12 @@ public class DeadBodyInvestigation : MonoBehaviour
         }
     }
 
-
     private void OpenDiary()
     {
         diaryOpen = true;
 
         diaryPrompt.SetActive(false);
 
-        // Disable player movement
         if (playerMovementScript != null)
         {
             playerMovementScript.enabled = false;
@@ -212,57 +163,37 @@ public class DeadBodyInvestigation : MonoBehaviour
 
         HideAllDiaryPages();
 
-        // Always start from page 1
         currentDiaryPage = 1;
 
         ShowDiaryPage(currentDiaryPage);
     }
-
-
-    // ======================================================
-    // FIRST DIARY NAVIGATION
-    // ======================================================
 
     private void HandleDiaryNavigation()
     {
         if (!diaryOpen)
             return;
 
-
-        // --------------------------------------------------
-        // RIGHT ARROW -> NEXT PAGE
-        // --------------------------------------------------
-
+        // RIGHT = next page
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             if (currentDiaryPage < 2)
             {
                 currentDiaryPage++;
-
                 ShowDiaryPage(currentDiaryPage);
             }
         }
 
-
-        // --------------------------------------------------
-        // LEFT ARROW -> PREVIOUS PAGE
-        // --------------------------------------------------
-
+        // LEFT = previous page
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if (currentDiaryPage > 1)
             {
                 currentDiaryPage--;
-
                 ShowDiaryPage(currentDiaryPage);
             }
         }
 
-
-        // --------------------------------------------------
-        // ENTER -> CLOSE ONLY ON PAGE 2
-        // --------------------------------------------------
-
+        // First diary closes only on page 2
         if (currentDiaryPage == 2 &&
             Input.GetKeyDown(KeyCode.Return))
         {
@@ -270,97 +201,59 @@ public class DeadBodyInvestigation : MonoBehaviour
         }
     }
 
-
-    // ======================================================
-    // SHOW FIRST DIARY PAGE
-    // ======================================================
-
     private void ShowDiaryPage(int pageNumber)
     {
         HideAllDiaryPages();
 
-        switch (pageNumber)
+        if (pageNumber == 1)
         {
-            case 1:
-                diaryImage1.SetActive(true);
-                break;
-
-            case 2:
-                diaryImage2.SetActive(true);
-                break;
+            diaryImage1.SetActive(true);
+        }
+        else if (pageNumber == 2)
+        {
+            diaryImage2.SetActive(true);
         }
     }
-
-
-    // ======================================================
-    // CLOSE FIRST DIARY
-    // ======================================================
 
     private void CloseDiary()
     {
         diaryOpen = false;
-
-        // First diary should not open again
         diaryReady = false;
 
         HideAllDiaryPages();
 
         diaryPanel.SetActive(false);
 
-        // Restore player movement
         if (playerMovementScript != null)
         {
             playerMovementScript.enabled = true;
         }
 
-        // Wait 2 seconds, then show AfterBodyPopup
+        // Entire body-investigation stage is now complete.
+        HasCompletedBodyStage = true;
+
         StartCoroutine(ShowAfterInvestigationPopup());
     }
 
-
-    // ======================================================
-    // AFTER BODY POPUP
-    // ======================================================
-
     private IEnumerator ShowAfterInvestigationPopup()
     {
-        // Wait two seconds after Enter
         yield return new WaitForSeconds(afterPopupDelay);
 
         afterInvestigationPopup.SetActive(true);
 
-        // Keep popup visible
         yield return new WaitForSeconds(afterPopupDuration);
 
         afterInvestigationPopup.SetActive(false);
     }
 
-
-    // ======================================================
-    // HIDE ALL DIARY PAGES
-    // ======================================================
-
     private void HideAllDiaryPages()
     {
-        if (diaryImage1 != null)
-            diaryImage1.SetActive(false);
-
-        if (diaryImage2 != null)
-            diaryImage2.SetActive(false);
-
-        if (diaryImage3 != null)
-            diaryImage3.SetActive(false);
-
-        if (diaryImage4 != null)
-            diaryImage4.SetActive(false);
-
-        if (diaryImage5 != null)
-            diaryImage5.SetActive(false);
-
-        if (diaryImage6 != null)
-            diaryImage6.SetActive(false);
-
-        if (diaryImage7 != null)
-            diaryImage7.SetActive(false);
+        if (diaryImage1 != null) diaryImage1.SetActive(false);
+        if (diaryImage2 != null) diaryImage2.SetActive(false);
+        if (diaryImage3 != null) diaryImage3.SetActive(false);
+        if (diaryImage4 != null) diaryImage4.SetActive(false);
+        if (diaryImage5 != null) diaryImage5.SetActive(false);
+        if (diaryImage6 != null) diaryImage6.SetActive(false);
+        if (diaryImage7 != null) diaryImage7.SetActive(false);
     }
 }
