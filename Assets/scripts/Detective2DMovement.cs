@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class Detective2DMovement : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float rotationSpeed = 10f;
 
-    void Update()
+    [Header("Rotation")]
+    [SerializeField] private float rotationSpeed = 8f;
+
+    private void Update()
     {
         float horizontal = 0f;
         float vertical = 0f;
 
-        // Left / Right
+        // -----------------------------------
+        // INPUT
+        // -----------------------------------
+
         if (Input.GetKey(KeyCode.A) ||
             Input.GetKey(KeyCode.LeftArrow))
         {
@@ -23,7 +29,6 @@ public class Detective2DMovement : MonoBehaviour
             horizontal = 1f;
         }
 
-        // Forward / Backward
         if (Input.GetKey(KeyCode.W) ||
             Input.GetKey(KeyCode.UpArrow))
         {
@@ -36,43 +41,55 @@ public class Detective2DMovement : MonoBehaviour
             vertical = -1f;
         }
 
-        // No input
-        if (horizontal == 0f && vertical == 0f)
-            return;
+        // -----------------------------------
+        // LOCAL AXES
+        // -----------------------------------
 
-        /*
-         * IMPORTANT:
-         * Use the detective's CURRENT forward and right directions,
-         * instead of fixed world X/Z.
-         */
-        Vector3 forward = transform.forward;
-        Vector3 right = transform.right;
+        Vector3 localForward = transform.forward;
+        Vector3 localRight = transform.right;
 
-        // Keep movement completely horizontal
-        forward.y = 0f;
-        right.y = 0f;
+        // Prevent vertical movement
+        localForward.y = 0f;
+        localRight.y = 0f;
 
-        forward.Normalize();
-        right.Normalize();
+        localForward.Normalize();
+        localRight.Normalize();
 
-        Vector3 movement =
-            forward * vertical +
-            right * horizontal;
+        // -----------------------------------
+        // MOVEMENT DIRECTION
+        // -----------------------------------
 
-        movement.Normalize();
+        Vector3 moveDirection =
+            (localForward * vertical) +
+            (localRight * horizontal);
 
-        // Move
+        if (moveDirection.sqrMagnitude > 1f)
+        {
+            moveDirection.Normalize();
+        }
+
+        // -----------------------------------
+        // MOVE
+        // -----------------------------------
+
         transform.position +=
-            movement * moveSpeed * Time.deltaTime;
+            moveDirection * moveSpeed * Time.deltaTime;
 
-        // Rotate toward the direction we are moving
-        Quaternion targetRotation =
-            Quaternion.LookRotation(movement, Vector3.up);
+        // -----------------------------------
+        // ROTATE TOWARD MOVEMENT
+        // -----------------------------------
 
-        transform.rotation = Quaternion.Slerp(
-            transform.rotation,
-            targetRotation,
-            rotationSpeed * Time.deltaTime
-        );
+        if (moveDirection.sqrMagnitude > 0.01f)
+        {
+            Quaternion targetRotation =
+                Quaternion.LookRotation(moveDirection);
+
+            transform.rotation =
+                Quaternion.Slerp(
+                    transform.rotation,
+                    targetRotation,
+                    rotationSpeed * Time.deltaTime
+                );
+        }
     }
 }
