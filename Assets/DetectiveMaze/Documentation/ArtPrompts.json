@@ -1,0 +1,33 @@
+{
+  "generationMode": "Built-in image_gen tool; one image per asset",
+  "assets": [
+    {
+      "file": "Wall.png",
+      "prompt": "Use case: stylized-concept. Asset type: a single square modular 2D sprite texture for a Unity detective maze game. Generate one 1024x1024 full-bleed overhead architectural wall-block texture: dark blue-gray plaster corridor partition with narrow warm walnut trim outlining its four edges, softly worn material, delicate bevel highlights, solid dark wall cap in the middle. Orthographic straight overhead, completely square silhouette filling ALL image edges, opaque. Nighttime old office building, hand-painted polished game art, subtle tactile detail readable at 64 pixels. This is ONE reusable wall tile, no room, no layout, no text, no objects, no background margin, no perspective, no extruded 3D render."
+    },
+    {
+      "file": "Floor.png",
+      "prompt": "Use case: stylized-concept. Asset type: single tileable square floor texture for a Unity top-down 2D detective maze. Generate one 1024x1024 full-bleed seamless overhead dark walnut parquet floor tile, restrained desaturated brown charcoal colors, fine wood grain and several narrow rectangular planks, slightly worn polish, dim blue night shadows. Polished hand-painted 2D game art. Flat orthographic straight overhead, uniform scale, opaque image filled edge to edge with floor, no border, no props, no walls, no text, no perspective. Floor sufficiently dark and quiet to contrast a tan trench coat and blue-gray walls."
+    },
+    {
+      "file": "LockedDoor.png",
+      "prompt": "Use case: stylized-concept. Asset type: isolated square 2D locked-door prop sprite for a top-down detective maze. Generate one 1024x1024 PNG with genuinely transparent background. Center a closed heavy walnut door within a narrow blue-gray frame, small brass padlock and dark red latch indicator clearly conveying LOCKED without words. Compact horizontal threshold seen from directly overhead with just enough illustrative tilt to reveal the closed wood panels, oriented so the detective approaches from below and the door spans left-to-right. Occupy central 85% width and 55% height, empty transparent padding. Hand-painted 2D adventure game art, night interior, subtle cool rim light, distinct readable silhouette at 64px. No room, no floor, no cast rectangular background, no text, no watermark."
+    },
+    {
+      "file": "OpenDoor.png",
+      "prompt": "Use case: stylized-concept. Asset type: isolated square 2D open exit-door prop sprite for a top-down detective maze. Generate one 1024x1024 PNG with genuinely transparent background. Center a blue-gray horizontal doorframe, heavy walnut door visibly swung open to the right at roughly 70 degrees, bright warm ivory-gold light visible in the doorway and spilling gently DOWNWARD into the corridor as a short translucent soft beam. Direct overhead orthographic 2D adventure game view, illustrated slight tilt solely to read the doorway, approaches from below, door across left-right. Central 85% width, hand-painted polished night office look, brass handle, distinct welcoming golden exit. No room, no tiled background, no words, no watermark; all space surrounding doorway and soft alpha light is genuinely transparent."
+    },
+    {
+      "file": "Detective.png",
+      "prompt": "Use case: stylized-concept. Asset type: ONE isolated player sprite for a Unity 2D top-down detective game. Generate one square 1024x1024 PNG with genuinely transparent background. Exact directly-overhead orthographic bird's-eye view of an adult detective looking toward TOP of image, recognizable tan trench coat with dark lapels and belt, brown fedora hat crown and brim, natural two arms close to body, right hand holding small brass magnifying glass near upper right, black shoes. Hat crown seen from above, shoulders and coat extending below it, face mostly hidden by brim. Polished hand-painted illustrated game sprite, strong warm sand silhouette with restrained blue night shadows and crisp edges readable at 48px. Center the single character with 10% transparent padding. No ground plane, no floor, no background, no perspective character portrait, no side view, no text, no sprite sheet."
+    },
+    {
+      "file": "PopupBackdrop.png",
+      "prompt": "Use case: ui-mockup. Asset type: ONE 16:10 landscape background image for a full-screen detective puzzle overlay in Unity. Generate a dark case-file window frame, extremely subtle charcoal paper grain, dark desaturated blue slate inset central field, slim worn brass double border and subdued manila file-folder corners, small empty index tab at upper left. Old office investigation at night, refined quiet hand-painted tactile game UI. Main central 85% area is almost uniform near-black to sit BEHIND a maze viewport. Edges crisp, no text, no letters, no numbers, no title, no icons, no maze, no character. Opaque source is intentional: Unity applies 90% alpha to make the backdrop semi-transparent. Entire image is the asset itself, no mockup device, no external canvas margin."
+    },
+    {
+      "file": "LightGlow.png",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent 2D soft illumination effect texture for a Unity nighttime corridor maze. Generate one square 1024x1024 PNG with genuinely transparent background. A small warm ivory center blending into a soft amber-gold radial haze, subtle painterly mist and very fine dust, fading smoothly all the way to completely transparent on every edge. Gentle lamp-light pool, low intensity at outskirts, brightest in small center, soft organic circular feathering. White/gold light only, no lamp fixture, no rays extending to edges, no hard circle, no outline, no floor, no dark background, no text. Suitable for ordinary alpha-blended sprite overlay, not a photo."
+    }
+  ]
+}
