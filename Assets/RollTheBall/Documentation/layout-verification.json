@@ -1,0 +1,112 @@
+{
+  "status": "passed",
+  "scope": "Independent JSON/occupancy verification; Unity C# tests require Unity Editor",
+  "dimensions": [
+    5,
+    5
+  ],
+  "locked_tiles": 6,
+  "movable_tiles": 7,
+  "empty_cells": 12,
+  "authored_solution_slides": 6,
+  "minimum_solution_slides": 6,
+  "path_cells": [
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      3
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      4,
+      1
+    ]
+  ],
+  "reachable_states": 8314,
+  "solved_states": 147,
+  "directed_legal_transitions": 117038,
+  "proof": [
+    [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        4
+      ]
+    ],
+    [
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    [
+      [
+        3,
+        3
+      ],
+      [
+        4,
+        3
+      ]
+    ],
+    [
+      [
+        3,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    [
+      [
+        3,
+        2
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    [
+      [
+        2,
+        2
+      ],
+      [
+        4,
+        2
+      ]
+    ]
+  ]
+}

@@ -1,0 +1,12 @@
+<linker>
+  <!-- Input System support is optional and selected at runtime without a hard dependency.
+       Preserve the reflected APIs when building with IL2CPP / managed stripping. -->
+  <assembly fullname="Unity.InputSystem" ignoreIfMissing="1">
+    <type fullname="UnityEngine.InputSystem.UI.InputSystemUIInputModule" preserve="all" />
+    <type fullname="UnityEngine.InputSystem.PlayerInput" preserve="all" />
+    <type fullname="UnityEngine.InputSystem.InputActionAsset" preserve="all" />
+    <type fullname="UnityEngine.InputSystem.InputActionMap" preserve="all" />
+    <type fullname="UnityEngine.InputSystem.InputAction" preserve="all" />
+    <type fullname="UnityEngine.InputSystem.DefaultInputActions" preserve="all" />
+  </assembly>
+</linker>

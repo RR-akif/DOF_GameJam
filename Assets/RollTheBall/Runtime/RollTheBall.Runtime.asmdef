@@ -1,0 +1,6 @@
+{
+  "name": "RollTheBall.Runtime",
+  "rootNamespace": "RollTheBall",
+  "references": ["Unity.ugui"],
+  "autoReferenced": true
+}

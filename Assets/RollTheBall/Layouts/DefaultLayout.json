@@ -1,0 +1,351 @@
+{
+  "columns": 5,
+  "rows": 5,
+  "cells": [
+    {
+      "col": 0,
+      "row": 0,
+      "tileType": 1,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": false,
+      "slideAxis": 0
+    },
+    {
+      "col": 1,
+      "row": 0,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": true,
+      "slideAxis": 0
+    },
+    {
+      "col": 2,
+      "row": 0,
+      "tileType": 1,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": false,
+      "slideAxis": 0
+    },
+    {
+      "col": 3,
+      "row": 0,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": true,
+      "slideAxis": 0
+    },
+    {
+      "col": 4,
+      "row": 0,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": false,
+      "slideAxis": 0
+    },
+    {
+      "col": 0,
+      "row": 1,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": true,
+      "slideAxis": 0
+    },
+    {
+      "col": 1,
+      "row": 1,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": true,
+      "slideAxis": 0
+    },
+    {
+      "col": 2,
+      "row": 1,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": true,
+      "slideAxis": 0
+    },
+    {
+      "col": 3,
+      "row": 1,
+      "tileType": 0,
+      "grooveUp": true,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": true,
+      "startsEmpty": false,
+      "slideAxis": 0
+    },
+    {
+      "col": 4,
+      "row": 1,
+      "tileType": 1,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": true,
+      "grooveRight": false,
+      "startsEmpty": false,
+      "slideAxis": 0
+    },
+    {
+      "col": 0,
+      "row": 2,
+      "tileType": 1,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": true,
+      "startsEmpty": false,
+      "slideAxis": 0
+    },
+    {
+      "col": 1,
+      "row": 2,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": true,
+      "grooveRight": true,
+      "startsEmpty": false,
+      "slideAxis": 1
+    },
+    {
+      "col": 2,
+      "row": 2,
+      "tileType": 0,
+      "grooveUp": true,
+      "grooveDown": false,
+      "grooveLeft": true,
+      "grooveRight": false,
+      "startsEmpty": false,
+      "slideAxis": 0
+    },
+    {
+      "col": 3,
+      "row": 2,
+      "tileType": 0,
+      "grooveUp": true,
+      "grooveDown": true,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": false,
+      "slideAxis": 1
+    },
+    {
+      "col": 4,
+      "row": 2,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": true,
+      "slideAxis": 0
+    },
+    {
+      "col": 0,
+      "row": 3,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": true,
+      "slideAxis": 0
+    },
+    {
+      "col": 1,
+      "row": 3,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": true,
+      "slideAxis": 0
+    },
+    {
+      "col": 2,
+      "row": 3,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": true,
+      "grooveLeft": false,
+      "grooveRight": true,
+      "startsEmpty": false,
+      "slideAxis": 1
+    },
+    {
+      "col": 3,
+      "row": 3,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": true,
+      "grooveLeft": true,
+      "grooveRight": false,
+      "startsEmpty": false,
+      "slideAxis": 0
+    },
+    {
+      "col": 4,
+      "row": 3,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": true,
+      "slideAxis": 0
+    },
+    {
+      "col": 0,
+      "row": 4,
+      "tileType": 1,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": false,
+      "slideAxis": 0
+    },
+    {
+      "col": 1,
+      "row": 4,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": true,
+      "slideAxis": 0
+    },
+    {
+      "col": 2,
+      "row": 4,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": true,
+      "slideAxis": 0
+    },
+    {
+      "col": 3,
+      "row": 4,
+      "tileType": 0,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": true,
+      "slideAxis": 0
+    },
+    {
+      "col": 4,
+      "row": 4,
+      "tileType": 1,
+      "grooveUp": false,
+      "grooveDown": false,
+      "grooveLeft": false,
+      "grooveRight": false,
+      "startsEmpty": false,
+      "slideAxis": 0
+    }
+  ],
+  "startCell": {
+    "x": 0,
+    "y": 2
+  },
+  "goalCell": {
+    "x": 4,
+    "y": 1
+  },
+  "debugSolution": [
+    {
+      "to": {
+        "x": 1,
+        "y": 4
+      },
+      "from": {
+        "x": 1,
+        "y": 2
+      }
+    },
+    {
+      "to": {
+        "x": 2,
+        "y": 4
+      },
+      "from": {
+        "x": 2,
+        "y": 3
+      }
+    },
+    {
+      "to": {
+        "x": 4,
+        "y": 3
+      },
+      "from": {
+        "x": 3,
+        "y": 3
+      }
+    },
+    {
+      "to": {
+        "x": 1,
+        "y": 1
+      },
+      "from": {
+        "x": 3,
+        "y": 1
+      }
+    },
+    {
+      "to": {
+        "x": 3,
+        "y": 4
+      },
+      "from": {
+        "x": 3,
+        "y": 2
+      }
+    },
+    {
+      "to": {
+        "x": 4,
+        "y": 2
+      },
+      "from": {
+        "x": 2,
+        "y": 2
+      }
+    }
+  ]
+}

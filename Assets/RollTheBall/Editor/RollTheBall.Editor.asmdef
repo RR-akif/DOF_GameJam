@@ -1,0 +1,7 @@
+{
+  "name": "RollTheBall.Editor",
+  "rootNamespace": "RollTheBall.Editor",
+  "references": ["RollTheBall.Runtime"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": true
+}

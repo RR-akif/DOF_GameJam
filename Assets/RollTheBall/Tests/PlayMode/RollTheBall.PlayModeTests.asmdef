@@ -1,0 +1,7 @@
+{
+  "name": "RollTheBall.PlayModeTests",
+  "references": ["RollTheBall.Runtime", "Unity.ugui"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "defineConstraints": ["UNITY_INCLUDE_TESTS"],
+  "autoReferenced": false
+}
