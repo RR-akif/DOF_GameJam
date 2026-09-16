@@ -1,21 +1,40 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [Header("Panels")]
+    [Header("Menu Panels")]
     public GameObject tutorialPanel;
-    public GameObject creditsPanel;
+    public GameObject aboutUsPanel;
 
+    private bool isStartingGame = false;
+
+    // PLAY
     public void PlayGame()
     {
-        SceneManager.LoadScene("Level1");
+        if (isStartingGame)
+            return;
+
+        StartCoroutine(StartGameAfterDelay());
     }
 
+    IEnumerator StartGameAfterDelay()
+    {
+        isStartingGame = true;
+
+        // Wait 2 seconds after pressing PLAY
+        yield return new WaitForSeconds(2f);
+
+        // Open IntroScene
+        SceneManager.LoadScene("IntroScene");
+    }
+
+    // TUTORIAL
     public void OpenTutorial()
     {
         tutorialPanel.SetActive(true);
-        creditsPanel.SetActive(false);
+        aboutUsPanel.SetActive(false);
     }
 
     public void CloseTutorial()
@@ -23,20 +42,21 @@ public class MainMenu : MonoBehaviour
         tutorialPanel.SetActive(false);
     }
 
-    public void OpenCredits()
+    // ABOUT US
+    public void OpenAboutUs()
     {
-        creditsPanel.SetActive(true);
+        aboutUsPanel.SetActive(true);
         tutorialPanel.SetActive(false);
     }
 
-    public void CloseCredits()
+    public void CloseAboutUs()
     {
-        creditsPanel.SetActive(false);
+        aboutUsPanel.SetActive(false);
     }
 
+    // EXIT
     public void ExitGame()
     {
-        Debug.Log("Game Exited");
         Application.Quit();
     }
 }
