@@ -12,9 +12,6 @@ public class Detective3DMovement : MonoBehaviour
 
     [Header("Jump Settings")]
     [SerializeField] private float jumpForce = 7.0f;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float groundCheckDistance = 0.2f;
-    [SerializeField] private Transform groundCheckPoint; // empty child at the character's feet
 
     private Rigidbody rb;
     private Transform cameraTransform;
@@ -22,13 +19,13 @@ public class Detective3DMovement : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
     private bool jumpRequested;
-    private bool isGrounded;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
 
-        // Freeze all 3 rotation axes in code (we handle rotation manually via MoveRotation)
+        // Prevent physics from rotating the player.
+        // Rotation is controlled manually below.
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
         if (Camera.main != null)
@@ -39,22 +36,20 @@ public class Detective3DMovement : MonoBehaviour
 
     private void Update()
     {
-        // Read movement input (WASD / Arrow keys)
+        // WASD + Arrow Keys
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        // Ignore small stray values (e.g. controller stick drift)
-        if (Mathf.Abs(horizontalInput) < inputDeadZone) horizontalInput = 0f;
-        if (Mathf.Abs(verticalInput) < inputDeadZone) verticalInput = 0f;
+        // Remove very small unwanted input
+        if (Mathf.Abs(horizontalInput) < inputDeadZone)
+            horizontalInput = 0f;
 
-        // Ground check (done in Update so a Space press isn't missed between physics steps)
-        if (groundCheckPoint != null)
-        {
-            isGrounded = Physics.CheckSphere(groundCheckPoint.position, groundCheckDistance, groundLayer);
-        }
+        if (Mathf.Abs(verticalInput) < inputDeadZone)
+            verticalInput = 0f;
 
-        // Queue a jump request; actual force applied in FixedUpdate
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        // Jump ANYWHERE.
+        // No grounded check is required.
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpRequested = true;
         }
@@ -66,48 +61,72 @@ public class Detective3DMovement : MonoBehaviour
 
         Vector3 targetVelocity = inputDirection * moveSpeed;
 
-        // Preserve existing Y velocity so gravity/jumps aren't overwritten
-        rb.linearVelocity = new Vector3(targetVelocity.x, rb.linearVelocity.y, targetVelocity.z);
+        // Horizontal movement.
+        // Keep the current Y velocity so gravity/jumping continues normally.
+        rb.linearVelocity = new Vector3(
+            targetVelocity.x,
+            rb.linearVelocity.y,
+            targetVelocity.z
+        );
 
-        // Rotate character to face movement direction
+        // Rotate player toward movement direction
         if (inputDirection.sqrMagnitude > 0.01f)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(inputDirection, Vector3.up);
-            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
+            Quaternion targetRotation =
+                Quaternion.LookRotation(inputDirection, Vector3.up);
+
+            rb.MoveRotation(
+                Quaternion.Slerp(
+                    rb.rotation,
+                    targetRotation,
+                    rotationSpeed * Time.fixedDeltaTime
+                )
+            );
         }
 
-        // Apply jump as an instantaneous velocity change
+        // Jump
         if (jumpRequested)
         {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+            rb.linearVelocity = new Vector3(
+                rb.linearVelocity.x,
+                jumpForce,
+                rb.linearVelocity.z
+            );
+
             jumpRequested = false;
         }
     }
 
     private Vector3 GetCameraRelativeInputDirection()
     {
-        Vector3 rawInput = new Vector3(horizontalInput, 0f, verticalInput);
+        Vector3 rawInput =
+            new Vector3(horizontalInput, 0f, verticalInput);
+
         rawInput = Vector3.ClampMagnitude(rawInput, 1f);
 
         if (cameraTransform == null)
         {
-            // Fallback: world-axis movement if no camera found
             return rawInput;
         }
 
-        // Flatten camera forward/right onto the horizontal plane so pitch doesn't affect movement
-        Vector3 camForward = Vector3.ProjectOnPlane(cameraTransform.forward, Vector3.up).normalized;
-        Vector3 camRight = Vector3.ProjectOnPlane(cameraTransform.right, Vector3.up).normalized;
+        // Ignore camera's vertical tilt.
+        // Movement remains on horizontal X-Z plane.
+        Vector3 camForward =
+            Vector3.ProjectOnPlane(
+                cameraTransform.forward,
+                Vector3.up
+            ).normalized;
 
-        Vector3 direction = (camForward * verticalInput + camRight * horizontalInput);
+        Vector3 camRight =
+            Vector3.ProjectOnPlane(
+                cameraTransform.right,
+                Vector3.up
+            ).normalized;
+
+        Vector3 direction =
+            camForward * verticalInput +
+            camRight * horizontalInput;
+
         return Vector3.ClampMagnitude(direction, 1f);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        // Visualize the ground check sphere in the editor
-        if (groundCheckPoint == null) return;
-        Gizmos.color = isGrounded ? Color.green : Color.red;
-        Gizmos.DrawWireSphere(groundCheckPoint.position, groundCheckDistance);
     }
 }
