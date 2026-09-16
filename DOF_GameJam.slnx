@@ -1,4 +1,8 @@
 ﻿<Solution>
+  <Project Path="RollTheBall.PlayModeTests.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="RollTheBall.Runtime.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="RollTheBall.EditModeTests.csproj" />
+  <Project Path="RollTheBall.Editor.csproj" />
 </Solution>
