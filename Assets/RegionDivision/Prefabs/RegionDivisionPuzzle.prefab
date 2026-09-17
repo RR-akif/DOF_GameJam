@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 400000}
+  - component: {fileID: 11400000}
+  m_Layer: 5
+  m_Name: RegionDivisionPuzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999f4f2b74bb535c974eecba9564577d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  layout:
+    columns: 7
+    rows: 6
+    clues:
+    - col: 0
+      row: 0
+      targetCellCount: 6
+    - col: 4
+      row: 1
+      targetCellCount: 4
+    - col: 6
+      row: 0
+      targetCellCount: 6
+    - col: 2
+      row: 3
+      targetCellCount: 6
+    - col: 3
+      row: 2
+      targetCellCount: 4
+    - col: 5
+      row: 5
+      targetCellCount: 6
+    - col: 0
+      row: 5
+      targetCellCount: 4
+    - col: 4
+      row: 4
+      targetCellCount: 6
+  debugSolution:
+  - clueIndex: 0
+    oppositeCol: 2
+    oppositeRow: 1
+  - clueIndex: 1
+    oppositeCol: 3
+    oppositeRow: 0
+  - clueIndex: 2
+    oppositeCol: 5
+    oppositeRow: 2
+  - clueIndex: 3
+    oppositeCol: 0
+    oppositeRow: 2
+  - clueIndex: 4
+    oppositeCol: 4
+    oppositeRow: 3
+  - clueIndex: 5
+    oppositeCol: 6
+    oppositeRow: 3
+  - clueIndex: 6
+    oppositeCol: 1
+    oppositeRow: 4
+  - clueIndex: 7
+    oppositeCol: 2
+    oppositeRow: 5
+  showDebugHooks: 1
+  logSuccessPlaceholder: 1
