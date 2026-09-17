@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MagicModelEulerTrigger : MonoBehaviour
 {
-    [SerializeField] private Level3NinthFloorSequence sequence;
+    [SerializeField]
+    private Level3NinthFloorSequence sequence;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -10,6 +11,8 @@ public class MagicModelEulerTrigger : MonoBehaviour
             return;
 
         if (sequence != null)
+        {
             sequence.TryOpenEulerPuzzle();
+        }
     }
 }
